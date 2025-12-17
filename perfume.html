@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fragrance Hub - Perfumes</title>
+<link rel="stylesheet" href="perfume.css">
+    
+</head>
+<body>
+
+<header>Fashion HUB <br> <i>Perfume Segment</i></header>
+
+<div id="cart-btn">Cart (<span id="cart-count">0</span>)</div>
+
+<nav>
+    <a href="wbsite.html">Home</a>
+    <a href="perfume.html">Perfumes</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+    <h2>Luxury Perfume Collection</h2>
+
+    <div class="products">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card">
+            <img src="./assets/Honeyoud.jpg">
+            <div class="product-name">Honey Oud</div>
+
+            <select class="size-select" id="size1">
+                <option value="8ml" data-price="149">8 ml - ₹149</option>
+                <option value="30ml" data-price="450">30 ml - ₹450</option>
+                <option value="50ml" data-price="500">50 ml - ₹500</option>
+                <option value="100ml" data-price="799">100 ml - ₹799</option>
+            </select>
+
+            <button onclick="addToCart('Honey Oud', 'size1')">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card">
+            <img src="./assets/White Oud.jpg">
+            <div class="product-name">White Oud</div>
+
+            <select class="size-select" id="size2">
+                <option value="8ml" data-price="149">8 ml - ₹149</option>
+                <option value="30ml" data-price="450">30 ml - ₹450</option>
+                <option value="50ml" data-price="500">50 ml - ₹500</option>
+                <option value="100ml" data-price="799">100 ml - ₹799</option>
+            </select>
+
+            <button onclick="addToCart('White Oud', 'size2')">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card">
+            <img src="./assets/Rose oud.jpg">
+            <div class="product-name">Rose Oud</div>
+
+            <select class="size-select" id="size3">
+                <option value="8ml" data-price="149">8 ml - ₹149</option>
+                <option value="30ml" data-price="450">30 ml - ₹450</option>
+                <option value="50ml" data-price="500">50 ml - ₹500</option>
+                <option value="100ml" data-price="799">100 ml - ₹799</option>
+            </select>
+
+            <button onclick="addToCart('Rose Oud', 'size3')">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card">
+            <img src="./assets/black Oud.jpg">
+            <div class="product-name">Black Oud</div>
+
+            <select class="size-select" id="size4">
+                <option value="8ml" data-price="149">8 ml - ₹149</option>
+                <option value="30ml" data-price="450">30 ml - ₹450</option>
+                <option value="50ml" data-price="500">50 ml - ₹500</option>
+                <option value="100ml" data-price="799">100 ml - ₹799</option>
+            </select>
+
+
+            <button onclick="addToCart('Black Oud', 'size4')">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- CART -->
+<div id="cart-box">
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+
+    <button class="whatsapp-order" onclick="sendOrder()">Place Order on WhatsApp</button>
+    <button onclick="closeCart()" style="margin-top:10px;">Close</button>
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, sizeId) {
+    let dropdown = document.getElementById(sizeId);
+    let size = dropdown.value;
+    let price = dropdown.options[dropdown.selectedIndex].dataset.price;
+
+    const item = cart.find(p => p.name === name && p.size === size);
+
+    if (item) item.qty++;
+    else cart.push({ name, size, price, qty: 1 });
+
+    updateCart();
+}
+
+function updateCart() {
+    document.getElementById("cart-count").innerText =
+        cart.reduce((a, b) => a + b.qty, 0);
+
+    const list = document.getElementById("cart-items");
+    list.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        list.innerHTML += `
+            <li style="margin:10px 0;">
+                ${item.name} (${item.size}) <br>
+                Qty:
+                <button class='qty-btn' onclick="changeQty(${index}, -1)">-</button>
+                ${item.qty}
+                <button class='qty-btn' onclick="changeQty(${index}, 1)">+</button>
+                <br><strong>₹${item.price}</strong>
+            </li>
+        `;
+    });
+}
+
+function changeQty(i, v) {
+    cart[i].qty += v;
+    if (cart[i].qty <= 0) cart.splice(i, 1);
+    updateCart();
+}
+
+document.getElementById("cart-btn").onclick = () => {
+    document.getElementById("cart-box").style.display = "block";
+};
+
+function closeCart() {
+    document.getElementById("cart-box").style.display = "none";
+}
+
+function sendOrder() {
+    let msg = "Perfume Order:%0A%0A";
+
+    cart.forEach(item => {
+        msg += `${item.name} (${item.size}) | Qty: ${item.qty} | Price: ₹${item.price}%0A`;
+    });
+
+    window.open(`https://wa.me/918976192026?text=${msg}`, "_blank");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Hub - Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Fashion Hub & Co...</header>
+
+<div id="cart-btn" style="position:absolute; top:20px; right:20px; background:#fff; padding:8px 15px; border-radius:5px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); font-weight:bold;">
+    Cart (<span id='cart-count'>0</span>)
+</div>
+
+<nav>
+    <a href="wbsite.html">Home</a>
+    <a href="perfume.html">Perfumes</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+
+<h2 class="section-title">Our Collection</h2>
+
+<div class="products">
+
+    <!-- PRODUCT 1 -->
+    <div class="product-card">
+        <img src="./assets/nhs waterproof.jpg" />
+        <h3>NHS water proof jackets</h3>
+        <p>₹799/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn active" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn" onclick="selectSize(this)">XXL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('NHS water proof jackets',799,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="product-card">
+        <img src="./assets/tommyhilfiger.jpg" />
+        <h3>TOMMY HILFIGER imported jacket</h3>
+        <p>₹999/./piece</p>
+
+        <div class="sizes">
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn active" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn" onclick="selectSize(this)">XXL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('TOMMY HILFIGER imported jacket',999,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="product-card">
+        <img src="./assets/burberry sweatshirt.jpg" />
+        <h3>Burberry sweatshirts</h3>
+        <p>₹499/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn active" onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Burberry sweatshirts',499,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 4-->
+    <div class="product-card">
+        <img src="./assets/northface hoodie.jpg" />
+        <h3>North face hoodies</h3>
+        <p>₹499/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn active" onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('North face hoodies',499,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 5-->
+    <div class="product-card">
+        <img src="./assets/nike sweatshirt.jpg" />
+        <h3>Nike sweat  shirt</h3>
+        <p>₹479/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn active" onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Nike sweat  shirt',479,this)">Add to Cart</button>
+    </div>
+    <!-- PRODUCT 6-->
+    <div class="product-card">
+        <img src="./assets/Balenciaga & Adidas impored hoodies.jpg" />
+        <h3>"Balenciaga & Adidas imported hoodies</h3>
+        <p>₹579/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn active" onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Balenciaga & Adidas imported hoodies',579,this)">Add to Cart</button>
+    </div>
+<!-- PRODUCT 7-->
+    <div class="product-card">
+        <img src="./assets/diesel shhirts .jpg" />
+        <h3>Diesel imported cashmilon shirts</h3>
+        <p>₹599/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Diesel imported cashmilon shirts',599,this)">Add to Cart</button>
+    </div>
+    <!-- PRODUCT 8-->
+    <div class="product-card">
+        <img src="./assets/lacoste sweatshirt.jpg" />
+        <h3>Lacoste imported  sweatshirts</h3>
+        <p>₹529/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn active" onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Lacoste imported  sweatshirts',529,this)">Add to Cart</button>
+    </div>
+     <!-- PRODUCT 9-->
+    <div class="product-card">
+        <img src="./assets/nike jacket.jpg" />
+        <h3>Nike air imported jacket</h3>
+        <p>₹799/piece</p>
+
+        <div class="sizes">
+           
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Nike air imported jacket',799,this)">Add to Cart</button>
+    </div>
+     <!-- PRODUCT 10-->
+    <div class="product-card">
+        <img src="./assets/zara zip t shirt.jpg" />
+        <h3>Zara imported t shirts</h3>
+        <p>₹429/piece</p>
+
+        <div class="sizes">
+           
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Zara imported t shirts',429,this)">Add to Cart</button>
+    </div>
+    <!-- PRODUCT 11-->
+    <div class="product-card">
+        <img src="./assets/hilfiger t shirts.jpg" />
+        <h3>Tommy hilfiger t shirts </h3>
+        <p>₹399/piece</p>
+
+        <div class="sizes">
+           
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Tommy hilfiger t shirts',399,this)">Add to Cart</button>
+    </div>
+
+
+    <!-- PRODUCT 12-->
+    <div class="product-card">
+        <img src="./assets/puma polo.jpg" />
+        <h3>"Puma"polo t shirts </h3>
+        <p>₹399/piece</p>
+
+        <div class="sizes">
+           
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Puma polo t shirts',399,this)">Add to Cart</button>
+    </div>
+
+    
+    <!-- PRODUCT 13-->
+    <div class="product-card">
+        <img src="./assets/nikezipper.jpg" />
+        <h3>Nike Zippers</h3>
+        <p>₹799/piece</p>
+
+        <div class="sizes">
+           
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn" onclick="selectSize(this)">XXL</button>
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Nike Zippers',99,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 14-->
+    <div class="product-card">
+        <img src="./assets/zara highneck.jpg" />
+        <h3>Zara highneck's</h3>
+        <p>₹349/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn " onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Nike Zippers',99,this)">Add to Cart</button>
+    </div>
+
+     <!-- PRODUCT 15-->
+    <div class="product-card">
+        <img src="./assets/ny zippers.jpg" />
+        <h3>NY  Imported Zipper</h3>
+        <p>₹549/piece</p>
+
+        <div class="sizes">
+            <button class="size-btn " onclick="selectSize(this)">S</button>
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('NY  Imported Zipper',549,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 16-->
+    <div class="product-card">
+        <img src="./assets/zara imported.jpg" />
+        <h3>Zara imported shirt</h3>
+        <p>₹669/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn " onclick="selectSize(this)">XXL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Zara imported shirt',669,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 17-->
+    <div class="product-card">
+        <img src="./assets/givenchi hoodies.jpg" />
+        <h3>Givenchi imported hoodies</h3>
+        <p>₹499/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn " onclick="selectSize(this)">XXL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Givenchi imported hoodies',499,this)">Add to Cart</button>
+    </div>
+
+    <!-- PRODUCT 18-->
+    <div class="product-card">
+        <img src="./assets/tommyhilfigerhoodies.jpg" />
+        <h3>Tommy Hilfiger imported hoodies</h3>
+        <p>₹499/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn " onclick="selectSize(this)">XXL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('Tommy Hilfiger imported hoodies',499,this)">Add to Cart</button>
+    </div>
+
+     <!-- PRODUCT 19-->
+    <div class="product-card">
+        <img src="./assets/levisweatshirt.jpg" />
+        <h3>Levi's imported sweatshirt</h3>
+        <p>₹499/piece</p>
+
+        <div class="sizes">
+            
+            <button class="size-btn " onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn " onclick="selectSize(this)">XXL</button>
+            
+        </div>
+
+        <button class="add-cart" onclick="addToCart('>Levis imported sweatshirt',499,this)">Add to Cart</button>
+    </div>
+
+
+    
+
+
+
+
+
+</div>
+
+<footer>
+    © 2025 Fashion Hub. All Rights Reserved.
+</footer>
+
+<script>
+let cart = [];
+
+// Select size
+function selectSize(btn) {
+    const parent = btn.parentNode;
+    parent.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+}
+
+function addToCart(name, price, btn) {
+    const size = btn.parentNode.querySelector(".sizes .active").innerText;
+
+    const existing = cart.find(i => i.name === name && i.size === size);
+    
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ name, price, size, qty: 1 });
+    }
+
+    document.getElementById('cart-count').innerText = cart.reduce((a,b)=>a+b.qty,0);
+
+    alert(name + " (Size " + size + ") added to cart");
+
+    updateCartDisplay();
+}
+
+// Cart popup
+document.getElementById("cart-btn").onclick = () => {
+    document.getElementById("cart-box").style.display = "block";
+};
+
+function closeCart() {
+    document.getElementById("cart-box").style.display = "none";
+}
+
+// Update cart
+function updateCartDisplay() {
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = "";
+
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.style.margin = "10px 0";
+
+        li.innerHTML = `
+            ${item.name} - Size: ${item.size} (x${item.qty})
+            <strong>₹${item.price}</strong>
+        `;
+
+        cartList.appendChild(li);
+    });
+}
+
+// WhatsApp Order
+function confirmOrder() {
+    let msg = "ORDER DETAILS:%0A%0A";
+    cart.forEach(item => {
+        msg += `${item.name} | Size: ${item.size} | Qty: ${item.qty} | Price: ₹${item.price}%0A`;
+    });
+
+    msg += `%0ATotal Items: ${cart.reduce((a,b)=>a+b.qty,0)}`;
+
+    window.open(`https://wa.me/918976192026?text=${msg}`);
+}
+</script>
+
+<!-- Cart Box -->
+<div id="cart-box" style="display:none; position:fixed; top:80px; right:20px; width:300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); max-height:400px; overflow-y:auto;">
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+    <button onclick="confirmOrder()" style="margin-top:10px; width:100%; padding:10px; background:#25d366; border:none; border-radius:5px; color:white;">
+        Confirm Order on WhatsApp
+    </button>
+    <button onclick="closeCart()" style="margin-top:10px; width:100%; padding:10px; background:#111; border:none; border-radius:5px; color:white;">
+        Close
+    </button>
+</div>
+
+</body>
+</html>

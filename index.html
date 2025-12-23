@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashion Hub - Products</title>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>Fashion Hub & Co...</header>
 
-<div id="cart-btn" style="position:absolute; top:20px; right:20px; background:#fff; padding:8px 15px; border-radius:5px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); font-weight:bold;">
-    Cart (<span id='cart-count'>0</span>)
+<div id="cart-btn" style="position:fixed; top:20px; right:20px; background:#fff; padding:8px 15px; border-radius:5px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); font-weight:bold;">
+    Cart (<span id="cart-count">0</span>)
 </div>
 
 <nav>
@@ -20,7 +20,6 @@
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
 </nav>
-
 
 <h2 class="section-title">Our Collection</h2>
 
@@ -33,7 +32,6 @@
         <p>₹799/piece</p>
 
         <div class="sizes">
-            
             <button class="size-btn active" onclick="selectSize(this)">M</button>
             <button class="size-btn" onclick="selectSize(this)">L</button>
             <button class="size-btn" onclick="selectSize(this)">XL</button>
@@ -43,7 +41,7 @@
         <button class="add-cart" onclick="addToCart('NHS water proof jackets',799,this)">Add to Cart</button>
     </div>
 
-    <!-- PRODUCT 2 -->
+     <!-- PRODUCT 2 -->
     <div class="product-card">
         <img src="./assets/tommyhilfiger.jpg" />
         <h3>TOMMY HILFIGER imported jacket</h3>
@@ -340,11 +338,6 @@
     </div>
 
 
-    
-
-
-
-
 
 </div>
 
@@ -352,6 +345,7 @@
     © 2025 Fashion Hub. All Rights Reserved.
 </footer>
 
+<!-- ================= CART SCRIPT ================= -->
 <script>
 let cart = [];
 
@@ -362,49 +356,83 @@ function selectSize(btn) {
     btn.classList.add("active");
 }
 
+// Add to cart
 function addToCart(name, price, btn) {
-    const size = btn.parentNode.querySelector(".sizes .active").innerText;
+    const activeSize = btn.parentNode.querySelector(".sizes .active");
 
+    if (!activeSize) {
+        alert("Please select a size");
+        return;
+    }
+
+    const size = activeSize.innerText;
     const existing = cart.find(i => i.name === name && i.size === size);
-    
+
     if (existing) {
         existing.qty += 1;
     } else {
         cart.push({ name, price, size, qty: 1 });
     }
 
-    document.getElementById('cart-count').innerText = cart.reduce((a,b)=>a+b.qty,0);
-
-    alert(name + " (Size " + size + ") added to cart");
-
     updateCartDisplay();
+    alert(name + " (Size " + size + ") added to cart");
 }
 
-// Cart popup
+// Open cart
 document.getElementById("cart-btn").onclick = () => {
     document.getElementById("cart-box").style.display = "block";
 };
 
+// Close cart
 function closeCart() {
     document.getElementById("cart-box").style.display = "none";
 }
 
-// Update cart
+// Increase quantity
+function increaseQty(index) {
+    cart[index].qty += 1;
+    updateCartDisplay();
+}
+
+// Decrease quantity
+function decreaseQty(index) {
+    cart[index].qty -= 1;
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+    updateCartDisplay();
+}
+
+// Update cart UI
 function updateCartDisplay() {
     const cartList = document.getElementById("cart-items");
     cartList.innerHTML = "";
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const li = document.createElement("li");
         li.style.margin = "10px 0";
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+        li.style.alignItems = "center";
 
         li.innerHTML = `
-            ${item.name} - Size: ${item.size} (x${item.qty})
-            <strong>₹${item.price}</strong>
-        `;
+            <div>
+                <strong>${item.name}</strong><br>
+                Size: ${item.size}<br>
+                ₹${item.price}
+            </div>
 
+            <div style="display:flex; align-items:center; gap:8px;">
+                <button onclick="decreaseQty(${index})">−</button>
+                <span>${item.qty}</span>
+                <button onclick="increaseQty(${index})">+</button>
+            </div>
+        `;
         cartList.appendChild(li);
     });
+
+    document.getElementById("cart-count").innerText =
+        cart.reduce((a,b)=>a+b.qty,0);
 }
 
 // WhatsApp Order
@@ -415,18 +443,19 @@ function confirmOrder() {
     });
 
     msg += `%0ATotal Items: ${cart.reduce((a,b)=>a+b.qty,0)}`;
-
     window.open(`https://wa.me/918976192026?text=${msg}`);
 }
 </script>
 
-<!-- Cart Box -->
+<!-- ================= CART BOX ================= -->
 <div id="cart-box" style="display:none; position:fixed; top:80px; right:20px; width:300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.3); max-height:400px; overflow-y:auto;">
     <h3>Your Cart</h3>
     <ul id="cart-items" style="list-style:none; padding:0;"></ul>
+
     <button onclick="confirmOrder()" style="margin-top:10px; width:100%; padding:10px; background:#25d366; border:none; border-radius:5px; color:white;">
         Confirm Order on WhatsApp
     </button>
+
     <button onclick="closeCart()" style="margin-top:10px; width:100%; padding:10px; background:#111; border:none; border-radius:5px; color:white;">
         Close
     </button>
